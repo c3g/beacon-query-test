@@ -11,7 +11,7 @@ import QueryVariants from "./QueryVariants";
 import QueryBiosamples from "./QueryBiosamples";
 import QueryIndividuals from "./QueryIndividuals";
 import QueryResults from "./QueryResults";
-import { apiGet } from "../api";
+import * as api from "../api";
 
 const App = () => {
   const [beaconInfo, setBeaconInfo] = useState(null);
@@ -36,12 +36,7 @@ const App = () => {
 
   // load Beacon name and a few statistics
   useEffect(() => {
-    const getBeaconInfo = async () => {
-      const results = await apiGet("/info");
-      console.log({ returnedGet: results.response });
-      setBeaconInfo(parseBeaconInfo(results.response));
-    };
-    getBeaconInfo();
+    api.info().then(r => setBeaconInfo(parseBeaconInfo(r)));
   }, []);
 
   return (
