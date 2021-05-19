@@ -92,7 +92,7 @@ const IconWithText = styled.div`
 `;
 
 const IconWithLink = styled(IconWithText)`
-    font-family: 'Helvetica Neue';
+    /* font-family: 'Helvetica Neue'; */
 `;
 
 
