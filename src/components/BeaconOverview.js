@@ -1,13 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
-
-import {
-  DatabaseOutlined,
-  MailOutlined,
-  LinkOutlined,
-} from '@ant-design/icons';
-import { PaginatedTable } from './PaginatedTable';
 import { datasetsTableHeader, makeDatasetsTableRows } from '../utils';
+import PaginatedTableAnt from './PaginatedTableAnt';
 import BeaconInfoCard from './BeaconInfoCard';
 
 const BeaconOverview = ({ beaconInfo }) => {
@@ -17,7 +11,7 @@ const BeaconOverview = ({ beaconInfo }) => {
   return (
     <OverviewWrapper>
       <BeaconInfoCard beaconInfo={beaconInfo} />
-      <PaginatedTable
+      <PaginatedTableAnt
         columns={datasetsTableHeader}
         rows={makeDatasetsTableRows(beaconInfo.datasets)}
       />
@@ -53,7 +47,6 @@ const InfoBoxRight = styled.div`
   padding: 20px;
   align-items: flex-start;
   justify-content: flex-start;
-  /* background-color: hotpink; */
 `;
 
 const IconWrapper = styled.div`
@@ -66,7 +59,3 @@ const IconWithText = styled.div`
 `;
 
 export default BeaconOverview;
-
-// Security reminder for links: when you create a link to an external website, eg <a target="_blank" href="externalsite.com">click here</a>, you must specify rel="noopener noreferer", otherwise the external site can access the current site DOM and take actions using javascript. See details here:
-// add "visit"
-// add "contact"

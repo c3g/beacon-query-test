@@ -1,3 +1,5 @@
+// unused for now
+
 import React, { useState } from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
@@ -18,7 +20,7 @@ const useStyles = makeStyles({
   },
 });
 
-export const PaginatedTable = ({ columns, rows }) => {
+const PaginatedTable = ({ columns, rows }) => {
   const classes = useStyles();
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);

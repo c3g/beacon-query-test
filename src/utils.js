@@ -1,12 +1,21 @@
 // mostly helper functions to unpackage data
 
+// const datasetsTableHeader = [
+//   { id: 'name', label: 'Dataset', minWidth: 80 },
+//   { id: 'variantCount', label: 'Variant Count', minWidth: 40, align: 'right' },
+//   { id: 'sampleCount', label: 'Sample Count', minWidth: 40, align: 'right' },
+//   { id: 'accessType', label: 'Access Type', minWidth: 90 },
+//   { id: 'assemblyId', label: 'Assembly id', minWidth: 50, align: 'left' },
+//   { id: 'createdDateTime', label: 'Created', minWidth: 100, align: 'right' },
+// ];
+
 const datasetsTableHeader = [
-  { id: "name", label: "Dataset", minWidth: 80 },
-  { id: "variantCount", label: "Variant Count", minWidth: 40, align: "right" },
-  { id: "sampleCount", label: "Sample Count", minWidth: 40, align: "right" },
-  { id: "accessType", label: "Access Type", minWidth: 90 },
-  { id: "assemblyId", label: "Assembly id", minWidth: 50, align: "left" },
-  { id: "createdDateTime", label: "Created", minWidth: 100, align: "right" },
+  { id: 'name', title: 'Dataset' },
+  { id: 'variantCount', title: 'Variant Count' },
+  { id: 'sampleCount', title: 'Sample Count' },
+  { id: 'accessType', title: 'Access Type' },
+  { id: 'assemblyId', title: 'Assembly id' },
+  { id: 'createdDateTime', title: 'Created' },
 ];
 
 //   similar code repeated below for other cases, could be consolidated
@@ -14,41 +23,40 @@ const makeDatasetsTableRows = (rawDatasets) => {
   const rows = [];
   rawDatasets.forEach((dataset) => {
     rows.push({
-      name: dataset.name || "-",
-      variantCount: dataset.variantCount || "-",
-      sampleCount: dataset.sampleCount || "-",
-      accessType: dataset.info.accessType || "-",
-      assemblyId: dataset.assemblyId || "-",
-      createdDateTime: dataset.createDateTime || "-",
+      name: dataset.name || '-',
+      variantCount: dataset.variantCount || '-',
+      sampleCount: dataset.sampleCount || '-',
+      accessType: dataset.info.accessType || '-',
+      assemblyId: dataset.assemblyId || '-',
+      createdDateTime: dataset.createDateTime || '-',
     });
   });
   return rows;
 };
 
 const biosamplesTableHeader = [
-  { id: "biosampleId", label: "id", minWidth: 20 },
+  { id: 'biosampleId', label: 'id', minWidth: 20 },
 
-  { id: "description", label: "Description", minWidth: 20 },
+  { id: 'description', label: 'Description', minWidth: 20 },
   {
-    id: "sampleOriginDetail",
-    label: "Sample Origin",
+    id: 'sampleOriginDetail',
+    label: 'Sample Origin',
     minWidth: 30,
-    align: "right",
+    align: 'right',
   },
   {
-    id: "collectionDate",
-    label: "Collection Date",
+    id: 'collectionDate',
+    label: 'Collection Date',
     minWidth: 40,
-    align: "right",
+    align: 'right',
   },
   {
-    id: "subjectAgeAtCollection",
-    label: "Subject Age (yrs)",
+    id: 'subjectAgeAtCollection',
+    label: 'Subject Age (yrs)',
     minWidth: 20,
   },
 ];
 // TO FIX, wrong categories XXXXXXXXXXXXXXXXXXXXXXXXXXX
-
 
 const makeBiosampleTableRows = (rawBiosamples) => {
   console.log({ makeBiosamplesTableRowsInput: rawBiosamples });
@@ -56,11 +64,12 @@ const makeBiosampleTableRows = (rawBiosamples) => {
   const rows = [];
   rawBiosamples.forEach((b) => {
     rows.push({
-      biosampleId: b.biosampleId || "-",
-      description: b.description || "-",
-      sampleOriginDetail: b.sampleOriginDescriptors[0].sampleOriginDetail || "-",
-      collectionDate: b.collectionDate || "-",
-      subjectAgeAtCollection: ageInYears(b.subjectAgeAtCollection) || "-",
+      biosampleId: b.biosampleId || '-',
+      description: b.description || '-',
+      sampleOriginDetail:
+        b.sampleOriginDescriptors[0].sampleOriginDetail || '-',
+      collectionDate: b.collectionDate || '-',
+      subjectAgeAtCollection: ageInYears(b.subjectAgeAtCollection) || '-',
     });
   });
   // console.log({ rows: rows });
@@ -69,22 +78,22 @@ const makeBiosampleTableRows = (rawBiosamples) => {
 
 // TODO
 const individualsTableHeader = [
-  { id: "description", label: "Description", minWidth: 115 },
+  { id: 'description', label: 'Description', minWidth: 115 },
   {
-    id: "sampleOriginDetail",
-    label: "Sample Origin",
+    id: 'sampleOriginDetail',
+    label: 'Sample Origin',
     minWidth: 120,
-    align: "right",
+    align: 'right',
   },
   {
-    id: "collectionDate",
-    label: "Collection Date",
+    id: 'collectionDate',
+    label: 'Collection Date',
     minWidth: 40,
-    align: "right",
+    align: 'right',
   },
   {
-    id: "subjectAgeAtCollection",
-    label: "Subject Age At Collection",
+    id: 'subjectAgeAtCollection',
+    label: 'Subject Age At Collection',
     minWidth: 90,
   },
 ];
@@ -96,10 +105,10 @@ const makeIndividualTableRows = (rawIndividuals) => {
   const rows = [];
   rawIndividuals.forEach((i) => {
     rows.push({
-      description: i.name || "",
-      sampleOriginDetail: i.variantCount || "",
-      collectionDate: i.sampleCount || "",
-      subjectAgeAtCollection: i.info.accessType || "",
+      description: i.name || '',
+      sampleOriginDetail: i.variantCount || '',
+      collectionDate: i.sampleCount || '',
+      subjectAgeAtCollection: i.info.accessType || '',
     });
   });
   // console.log({ rows: rows });
@@ -205,12 +214,12 @@ const getCohortData = (results) => {
 
 // I'm guessing there's a more systematic solution for this
 const labelDictionary = {
-  "PATO:0000384": "Male",
-  "PATO:0000383": "Female",
-  "HANCESTRO:0021": "Chinese",
-  "NCIT:C42331": "African",
-  "GAZ:00002641": "England",
-  "GAZ:00002459": "United States of America",
+  'PATO:0000384': 'Male',
+  'PATO:0000383': 'Female',
+  'HANCESTRO:0021': 'Chinese',
+  'NCIT:C42331': 'African',
+  'GAZ:00002641': 'England',
+  'GAZ:00002459': 'United States of America',
 };
 
 module.exports = {
