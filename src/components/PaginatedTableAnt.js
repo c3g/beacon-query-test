@@ -9,7 +9,7 @@ const pagination = { total: 1 };
 
 const PaginatedTable = ({ rows, columns }) => {
   return (
-    <Table dataSource={rows} pagination={pagination}>
+    <Table dataSource={rows} pagination={pagination} rowKey="name">
       {columns.map((c) => (
         <Column title={c.title} dataIndex={c.id} key={c.id} />
       ))}
@@ -18,3 +18,4 @@ const PaginatedTable = ({ rows, columns }) => {
 };
 
 export default PaginatedTable;
+// TODO: using columns={columns} prop probably easier
