@@ -22,18 +22,18 @@ const BeaconInfoCard = ({ beaconInfo }) => {
       <InfoBoxLeft>
         <BeaconLogo src={orgLogo}></BeaconLogo>
         <h3>{orgName}</h3>
-        <IconWithText>
+        <IconWithLink>
           <IconWrapper>
             <LinkOutlined />
           </IconWrapper>
-          <h3>{orgUrl}</h3>
-        </IconWithText>
-        <IconWithText>
+          <a href={orgUrl} target="_blank" rel="noopener noreferrer"><h3>Visit</h3></a>
+        </IconWithLink>
+        <IconWithLink>
           <IconWrapper>
             <MailOutlined />
           </IconWrapper>
-          <h3>{orgContact}</h3>
-        </IconWithText>
+          <a href={orgContact} target="_blank" rel="noopener noreferrer"><h3>Contact</h3></a>
+        </IconWithLink>
       </InfoBoxLeft>
       <InfoBoxRight>
         <BeaconNameWrapper>{beaconName}</BeaconNameWrapper>
@@ -49,11 +49,6 @@ const BeaconInfoCard = ({ beaconInfo }) => {
   );
 };
 
-const OverviewWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
 const BeaconLogo = styled.img`
   max-width: 200px;
   margin-bottom: 10px;
@@ -65,8 +60,11 @@ const InfoCardWrapper = styled.div`
   background-color: white;
   border-radius: 5px;
   box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
-  margin: 25px;
+  margin: 10px;
   padding: 20px;
+  font-family: 'Helvetica Neue';
+  /* max-width: 700px; */
+  /* background-color: hotpink; */
 `;
 
 const InfoBoxLeft = styled.div`
@@ -85,7 +83,7 @@ const InfoBoxRight = styled.div`
 const BeaconNameWrapper = styled.h1``;
 
 const IconWrapper = styled.div`
-  padding: 3px 5px 0 0;
+  padding: 2px 8px 0 0;
 `;
 
 const IconWithText = styled.div`
@@ -93,6 +91,11 @@ const IconWithText = styled.div`
   flex-direction: row;
 `;
 
+const IconWithLink = styled(IconWithText)`
+    font-family: 'Helvetica Neue';
+`;
+
+
 export default BeaconInfoCard;
 
-// fix link and contact to real link and contact
+
