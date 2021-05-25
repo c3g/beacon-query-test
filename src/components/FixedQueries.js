@@ -40,10 +40,10 @@ const FixedQueries = ({ setQueryResults }) => {
   return (
     <Wrapper>
       <Button onClick={() => submitVariantsQuery(SnpQuery)}>SNP query</Button>
-      <Button onClick={() => submitVariantsQuery(mtQuery)} disabled>
+      <Button onClick={() => submitVariantsQuery(mtQuery)}>
         All MT variants
       </Button>
-      <Button onClick={() => submitVariantsQuery(strucuturalQuery)} disabled>
+      <Button onClick={() => submitVariantsQuery(strucuturalQuery)}>
         structural variant query
       </Button>
     </Wrapper>
@@ -57,22 +57,3 @@ const Button = styled.button`
 `;
 
 export default FixedQueries;
-
-// all MT variants
-// {"assemblyId":"GRCh37.p1","referenceName":"MT","start":"1","end":"16569","includeDatasetResponses":"ALL","limit":100}
-
-// structural variant query
-// assemblyId: GRCh37.p1
-// referenceName: 21
-// start: 42809489
-// end: 42809491
-
-// SNP query, works with multiple endpoints
-// assemblyId: GRCh37.p1
-// referenceName: MT
-// referenceBases: T
-// alternateBases: C
-// start: 150
-
-// Chr  position	variantID  Alleles(ref/alt)  variantType
-// sampleCount

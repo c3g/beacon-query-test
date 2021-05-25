@@ -1,19 +1,21 @@
 import React from 'react';
 import { Tabs } from 'antd';
 import styled from 'styled-components';
+import VariantsResults from './VariantsResults';
 
 const { TabPane } = Tabs;
 
 function callback(key) {
-  console.log(key);
+  // todo
 }
 
 const ResultsTabs = ({ queryResults }) => {
+  console.log({ queryResults: queryResults });
   return (
     <TabsWrapper>
       <Tabs defaultActiveKey="1" onChange={callback}>
         <TabPane tab="Variants" key="1">
-          Content of Tab Pane 1
+          {queryResults && <VariantsResults queryResults={queryResults} />}
         </TabPane>
         <TabPane tab="Biosamples" key="2">
           Content of Tab Pane 2
@@ -35,7 +37,7 @@ const TabsWrapper = styled.div`
   margin: 20px 0;
   padding: 20px;
   font-family: 'Helvetica Neue';
-  min-width: 600px;
+  width: 100vw;
 `;
 
 export default ResultsTabs;

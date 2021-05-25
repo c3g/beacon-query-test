@@ -5,7 +5,7 @@ import ResultsTabs from './ResultsTabs';
 import FixedQueries from './FixedQueries';
 
 const App = () => {
-  const [queryResults, setQueryResults] = useState({});
+  const [queryResults, setQueryResults] = useState(null);
 
   return (
     <Wrapper>
