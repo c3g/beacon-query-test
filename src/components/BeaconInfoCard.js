@@ -1,10 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import {
-  DatabaseOutlined,
-  MailOutlined,
-  LinkOutlined,
-} from '@ant-design/icons';
+import { DatabaseOutlined } from '@ant-design/icons';
 
 const BeaconInfoCard = ({ beaconInfo }) => {
   const {
@@ -20,70 +16,75 @@ const BeaconInfoCard = ({ beaconInfo }) => {
   return (
     <InfoCardWrapper>
       <InfoBoxLeft>
-        <BeaconLogo src={orgLogo}></BeaconLogo>
-        <h3>{orgName}</h3>
-        <IconWithLink>
+        <BeaconLogo src={orgLogo} alt={orgName}></BeaconLogo>
+        <h4>{orgName}</h4>
+        {/* <IconWithLink>
           <IconWrapper>
             <LinkOutlined />
           </IconWrapper>
-          <a href={orgUrl} target="_blank" rel="noopener noreferrer"><h3>Visit</h3></a>
+          <a href={orgUrl} target='_blank' rel='noopener noreferrer'>
+            <h3>Visit</h3>
+          </a>
         </IconWithLink>
         <IconWithLink>
           <IconWrapper>
             <MailOutlined />
           </IconWrapper>
-          <a href={orgContact} target="_blank" rel="noopener noreferrer"><h3>Contact</h3></a>
-        </IconWithLink>
+          <a href={orgContact} target='_blank' rel='noopener noreferrer'>
+            <h3>Contact</h3>
+          </a>
+        </IconWithLink> */}
       </InfoBoxLeft>
       <InfoBoxRight>
         <BeaconNameWrapper>{beaconName}</BeaconNameWrapper>
-        <h3>Beacon version: {beaconVersion}</h3>
+        {/* <h3>Beacon version: {beaconVersion}</h3> */}
         <IconWithText>
           <IconWrapper>
             <DatabaseOutlined />
           </IconWrapper>
-          <h3>{datasets.length} Datasets</h3>
+          <h4>{datasets.length} Datasets</h4>
         </IconWithText>
       </InfoBoxRight>
     </InfoCardWrapper>
   );
 };
 
-const BeaconLogo = styled.img`
-  max-width: 200px;
-  margin-bottom: 10px;
-`;
-
 const InfoCardWrapper = styled.div`
   display: flex;
   flex-direction: row;
   background-color: white;
   border-radius: 5px;
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.05);
-  margin: 10px;
-  padding: 20px;
+  box-shadow: 0px 15px 10px -15px rgba(0, 0, 0, 0.07);
+  padding: 5px 30px;
+  width: 100%;
+  margin-bottom: 40px;
   font-family: 'Helvetica Neue';
-  /* max-width: 700px; */
-  /* background-color: hotpink; */
+`;
+
+const BeaconLogo = styled.img`
+  max-width: 150px;
+  margin-bottom: 5 px;
 `;
 
 const InfoBoxLeft = styled.div`
-  padding-right: 20px;
+  padding-right: 30px;
+  max-width: 400px;
   border-right: 1px solid #bbbbbb;
 `;
 
 const InfoBoxRight = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 0 20px;
+  padding: 0 30px;
   justify-content: flex-end;
-  /* background-color: hotpink; */
 `;
 
-const BeaconNameWrapper = styled.h1``;
+const BeaconNameWrapper = styled.h3`
+  margin-bottom: auto;
+`;
 
 const IconWrapper = styled.div`
-  padding: 2px 8px 0 0;
+  padding: 0px 10px 0 0;
 `;
 
 const IconWithText = styled.div`
@@ -92,10 +93,7 @@ const IconWithText = styled.div`
 `;
 
 const IconWithLink = styled(IconWithText)`
-    /* font-family: 'Helvetica Neue'; */
+  /* font-family: 'Helvetica Neue'; */
 `;
 
-
 export default BeaconInfoCard;
-
-
