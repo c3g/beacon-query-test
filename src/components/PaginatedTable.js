@@ -5,11 +5,13 @@ import { Table, Tag, Space, Pagination } from 'antd';
 const { Column } = Table;
 
 // TODO: set dynamically
-const pagination = { total: 1 };
+const pagination = { total: 100 };
 
 const PaginatedTable = ({ rows, columns }) => {
+  console.log({ rows: rows, columns: columns });
+
   return (
-    <Table dataSource={rows} pagination={pagination} rowKey="name">
+    <Table dataSource={rows} pagination={{ total: rows.length }} rowKey="id">
       {columns.map((c) => (
         <Column title={c.title} dataIndex={c.id} key={c.id} />
       ))}
