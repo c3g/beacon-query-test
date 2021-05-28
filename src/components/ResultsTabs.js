@@ -2,6 +2,9 @@ import React from 'react';
 import { Tabs } from 'antd';
 import styled from 'styled-components';
 import VariantsResults from './VariantsResults';
+import CohortsInfo from './CohortsInfo';
+import DatasetsInfo from './DatasetsInfo';
+import Spinner from './Spinner';
 
 const { TabPane } = Tabs;
 
@@ -9,8 +12,7 @@ function callback(key) {
   // todo
 }
 
-const ResultsTabs = ({ queryResults }) => {
-  console.log({ queryResults: queryResults });
+const ResultsTabs = ({ queryResults, cohortsInfo, datasetsInfo }) => {
   return (
     <TabsWrapper>
       <Tabs defaultActiveKey="1" onChange={callback}>
@@ -20,8 +22,11 @@ const ResultsTabs = ({ queryResults }) => {
         <TabPane tab="Biosamples" key="2">
           Content of Tab Pane 2
         </TabPane>
-        <TabPane tab="Beacon Databases" key="3">
-          Content of Tab Pane 3
+        <TabPane tab="Beacon Datasets" key="3">
+          <DatasetsInfo datasetsInfo={datasetsInfo} />
+        </TabPane>
+        <TabPane tab="Cohorts" key="4">
+          <CohortsInfo cohortsInfo={cohortsInfo} />
         </TabPane>
       </Tabs>
     </TabsWrapper>

@@ -2,12 +2,12 @@ import React from 'react';
 import PaginatedTable from './PaginatedTable';
 
 const variantsTableColumns = [
-  { id: 'id', title: 'id' },
-  { id: 'position', title: 'Position' },
-  { id: 'ref', title: 'ref' },
-  { id: 'alt', title: 'alt' },
-  { id: 'variantType', title: 'Variant Type' },
-  { id: 'biosampleCount', title: 'Biosample count' },
+  { dataIndex: 'id', title: 'id' },
+  { dataIndex: 'position', title: 'Position' },
+  { dataIndex: 'ref', title: 'ref' },
+  { dataIndex: 'alt', title: 'alt' },
+  { dataIndex: 'variantType', title: 'Variant Type' },
+  { dataIndex: 'biosampleCount', title: 'Biosample count' },
 ];
 
 const variantsTableRows = (variants) => {

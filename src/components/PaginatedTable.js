@@ -8,16 +8,14 @@ const { Column } = Table;
 const pagination = { total: 100 };
 
 const PaginatedTable = ({ rows, columns }) => {
-  console.log({ rows: rows, columns: columns });
-
   return (
-    <Table dataSource={rows} pagination={{ total: rows.length }} rowKey="id">
-      {columns.map((c) => (
-        <Column title={c.title} dataIndex={c.id} key={c.id} />
-      ))}
-    </Table>
+    <Table
+      dataSource={rows}
+      columns={columns}
+      pagination={{ total: rows.length }}
+      rowKey="dataIndex"
+    ></Table>
   );
 };
 
 export default PaginatedTable;
-// TODO: using columns={columns} prop probably easier

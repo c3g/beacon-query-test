@@ -2,18 +2,17 @@
 const API_BASE = '';
 
 export const info = () => apiGet('/info').then((r) => r.response);
+export const datasets = () => apiGet('/datasets').then((r) => r.response);
+
 export const variants = (body) =>
   apiPost('/g_variants', body).then((r) => r.response);
 export const biosamples = (body) =>
   apiPost('/biosamples', body).then((r) => r.response);
 export const individuals = (body) =>
   apiPost('/individuals', body).then((r) => r.response);
+export const cohorts = () => apiPost('/cohorts', {}).then((r) => r.response);
 
-// ** note **: two endpoints appear to be incorrectly swapped in the api:
-// /g_variants/{id}/individuals should return all individuals with the particular variant given by the id
-// this doesn't work, though... instead it returns all *biosamples* with this variant
-// similarly /g_variants/{id}/biosamples returns, instead of biosamples, a set of *individuals*
-// so for now we'll swap the routes back here so at least the rest of our code reads correctly
+// ** note **: /g_variants/{id}/individuals and /g_variants/{id}/biosamples incorrectly swapped in api
 
 export const individualsByVariantId = (id, body) =>
   apiPost(`/g_variants/${id}/biosamples`, body).then((r) => r.response);

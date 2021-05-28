@@ -1,11 +1,16 @@
 import React from 'react';
-import { VictoryPie, VictoryLabel } from 'victory';
+import { VictoryPie, VictoryLabel, VictoryTooltip } from 'victory';
 
-const COLOURS = ['#1b9e77', '#c72540', '#2986e2', '#0da650', '#9d176a'];
+const COLOURS = ['#1b9e77', '#9d176a', '#c72540', '#2986e2'];
+
+const chartStyle = { labels: { fontSize: 14, fill: 'black' } };
+
+// reposition chart inside container
+const yDisplacement = 40;
 
 const VictoryDonutChart = ({ data, width }) => {
   return (
-    <svg viewBox="0 0 400 400">
+    <svg viewBox={`0 ${yDisplacement} ${width} ${width - 50}`}>
       <VictoryPie
         colorScale={COLOURS}
         standalone={false}
@@ -14,16 +19,16 @@ const VictoryDonutChart = ({ data, width }) => {
         data={data}
         x="name"
         y="value"
-        innerRadius={10}
-        labelRadius={width / 3}
-        style={{ labels: { fontSize: 16, fill: 'black' } }}
+        innerRadius={18}
+        labelRadius={width / 4}
+        style={chartStyle}
       />
       {/* <VictoryLabel
         textAnchor='middle'
-        style={{ fontSize: 10 }}
-        x={100}
-        y={100}
-        text='Pie!'
+        style={{ fontSize: 14 }}
+        x={width / 2}
+        y={20}
+        text='Label!'
       /> */}
     </svg>
   );
