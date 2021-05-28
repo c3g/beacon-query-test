@@ -3,7 +3,8 @@ const API_BASE = '';
 
 export const info = () => apiGet('/info').then((r) => r.response);
 export const datasets = () => apiGet('/datasets').then((r) => r.response);
-
+export const filteringTerms = () =>
+  apiGet('/filtering_terms').then((r) => r.filteringTerms);
 export const variants = (body) =>
   apiPost('/g_variants', body).then((r) => r.response);
 export const biosamples = (body) =>
