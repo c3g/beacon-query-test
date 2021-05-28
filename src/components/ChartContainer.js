@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import VictoryDonutChart from './VictoryDonutChart';
+import { headerColour, borderColour } from '../constants';
 
 const ChartContainer = ({ title, data, chartWidth, containerWidth }) => {
   return (
@@ -17,9 +18,9 @@ const ChartWrapper = styled.div`
   width: ${(props) => props.width}px;
   max-height: 200px;
   justify-content: center;
-  margin: 0;
+  margin: 5px;
   padding: 0;
-  /* background-color: hotpink; */
+  border: 1px solid ${borderColour};
 `;
 
 const Title = styled.p`
@@ -27,6 +28,8 @@ const Title = styled.p`
   text-align: center;
   margin: 0;
   padding: 0;
+  border-bottom: 1px solid ${borderColour};
+  background-color: ${headerColour};
 `;
 
 export default ChartContainer;
