@@ -26,16 +26,6 @@ const datasetsTableColumns = [
   },
 ];
 
-const LinksWrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  > a p {
-    margin: 0;
-    padding: 0;
-  }
-`;
-
 function handoverLinks(handovers) {
   if (handovers == null) {
     return '-';
@@ -72,5 +62,15 @@ const DatasetsInfo = ({ datasetsInfo }) => {
     />
   );
 };
+
+const LinksWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  > a p {
+    margin: 0;
+    padding: 0;
+  }
+`;
 
 export default DatasetsInfo;

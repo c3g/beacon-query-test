@@ -33,7 +33,6 @@ const SnpQuery = {
 // selection of fixed queries in lieu of forms
 const FixedQueries = ({ setQueryResults }) => {
   const submitVariantsQuery = (query) => {
-    console.log({ query: query });
     api.variants(query).then((r) => setQueryResults(r));
   };
 
