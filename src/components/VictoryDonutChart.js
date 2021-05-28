@@ -6,7 +6,7 @@ const COLOURS = ['#1b9e77', '#9d176a', '#c72540', '#2986e2'];
 const chartStyle = { labels: { fontSize: 14, fill: 'black' } };
 
 // reposition chart inside container
-const yDisplacement = 40;
+const yDisplacement = 35;
 
 const VictoryDonutChart = ({ data, width }) => {
   return (
@@ -23,13 +23,6 @@ const VictoryDonutChart = ({ data, width }) => {
         labelRadius={width / 4}
         style={chartStyle}
       />
-      {/* <VictoryLabel
-        textAnchor='middle'
-        style={{ fontSize: 14 }}
-        x={width / 2}
-        y={20}
-        text='Label!'
-      /> */}
     </svg>
   );
 };

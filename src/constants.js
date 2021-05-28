@@ -29,6 +29,8 @@ export const chromosomes = [
 
 export const bases = ['A', 'C', 'T', 'G'];
 
-export const mainColour = '#aaaaaa';
+export const headerColour = '#fafafa';
+
+export const borderColour = '#dedede';
 
 export const allowAnimation = false;
