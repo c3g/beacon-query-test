@@ -30,6 +30,10 @@ const SnpQuery = {
   limit: '100',
 };
 
+const filterSearch = {
+  filters: 'BTO:0000089,NCIT:C37967',
+};
+
 // selection of fixed queries in lieu of forms
 const FixedQueries = ({
   setVariantQueryResults,
@@ -48,6 +52,9 @@ const FixedQueries = ({
       </Button>
       <Button onClick={() => submitVariantsQuery(strucuturalQuery)}>
         structural variant query
+      </Button>
+      <Button onClick={() => submitVariantsQuery(filterSearch)}>
+        blood samples filtered by phenotypic feature (Hypercholesterolemia)
       </Button>
     </Wrapper>
   );
