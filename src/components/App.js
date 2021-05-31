@@ -7,14 +7,18 @@ import * as api from '../api';
 import VictoryDonutChart from './VictoryDonutChart';
 
 const App = () => {
-  const [queryResults, setQueryResults] = useState(null);
+  // todo: repackage into context or redux
+  const [variantQueryResults, setVariantQueryResults] = useState(null);
+  const [biosamplesQueryResults, setBiosamplesQueryResults] = useState(null);
   const [beaconInfo, setBeaconInfo] = useState(null);
   const [cohortsInfo, setCohortsInfo] = useState(null);
   const [datasetsInfo, setDatasetsInfo] = useState(null);
+  const [filteringTerms, setFilteringTerms] = useState(null);
 
   // load Beacon name and a few statistics
   useEffect(() => {
     api.info().then((r) => setBeaconInfo(parseBeaconInfo(r)));
+    api.filteringTerms().then((r) => setFilteringTerms(r));
     api.cohorts().then((r) => setCohortsInfo(parseCohortsInfo(r)));
     api.datasets().then((r) => setDatasetsInfo(r));
   }, []);
@@ -22,11 +26,16 @@ const App = () => {
   return (
     <Wrapper>
       <Header beaconInfo={beaconInfo} />
-      <FixedQueries setQueryResults={setQueryResults} />
+      <FixedQueries
+        setVariantQueryResults={setVariantQueryResults}
+        setBiosamplesQueryResults={setBiosamplesQueryResults}
+      />
       <ResultsTabs
-        queryResults={queryResults}
+        variantQueryResults={variantQueryResults}
+        biosamplesQueryResults={biosamplesQueryResults}
         cohortsInfo={cohortsInfo}
         datasetsInfo={datasetsInfo}
+        filteringTerms={filteringTerms}
       />
     </Wrapper>
   );

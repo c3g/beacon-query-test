@@ -8,6 +8,7 @@ const { Column } = Table;
 const pagination = { total: 100 };
 
 const PaginatedTable = ({ rows, columns }) => {
+  console.log({ rows: rows, columns: columns });
   return (
     <Table
       dataSource={rows}

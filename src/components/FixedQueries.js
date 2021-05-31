@@ -31,10 +31,13 @@ const SnpQuery = {
 };
 
 // selection of fixed queries in lieu of forms
-const FixedQueries = ({ setQueryResults }) => {
+const FixedQueries = ({
+  setVariantQueryResults,
+  setBiosamplesQueryResults,
+}) => {
   const submitVariantsQuery = (query) => {
-    console.log({ query: query });
-    api.variants(query).then((r) => setQueryResults(r));
+    api.variants(query).then((r) => setVariantQueryResults(r));
+    api.biosamples(query).then((r) => setBiosamplesQueryResults(r));
   };
 
   return (

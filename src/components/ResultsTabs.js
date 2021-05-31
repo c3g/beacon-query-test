@@ -5,6 +5,7 @@ import VariantsResults from './VariantsResults';
 import CohortsInfo from './CohortsInfo';
 import DatasetsInfo from './DatasetsInfo';
 import Spinner from './Spinner';
+import BiosamplesResults from './BiosamplesResults';
 
 const { TabPane } = Tabs;
 
@@ -12,15 +13,28 @@ function callback(key) {
   // todo
 }
 
-const ResultsTabs = ({ queryResults, cohortsInfo, datasetsInfo }) => {
+const ResultsTabs = ({
+  variantQueryResults,
+  biosamplesQueryResults,
+  cohortsInfo,
+  datasetsInfo,
+  filteringTerms,
+}) => {
   return (
     <TabsWrapper>
       <Tabs defaultActiveKey="1" onChange={callback}>
         <TabPane tab="Variants" key="1">
-          {queryResults && <VariantsResults queryResults={queryResults} />}
+          {variantQueryResults && (
+            <VariantsResults queryResults={variantQueryResults} />
+          )}
         </TabPane>
         <TabPane tab="Biosamples" key="2">
-          Content of Tab Pane 2
+          {biosamplesQueryResults && (
+            <BiosamplesResults
+              filteringTerms={filteringTerms}
+              queryResults={biosamplesQueryResults}
+            />
+          )}
         </TabPane>
         <TabPane tab="Beacon Datasets" key="3">
           <DatasetsInfo datasetsInfo={datasetsInfo} />

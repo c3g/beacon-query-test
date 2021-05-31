@@ -1,5 +1,6 @@
 import React from 'react';
 import PaginatedTable from './PaginatedTable';
+import styled from 'styled-components';
 
 const variantsTableColumns = [
   { dataIndex: 'id', title: 'id' },
@@ -7,8 +8,37 @@ const variantsTableColumns = [
   { dataIndex: 'ref', title: 'ref' },
   { dataIndex: 'alt', title: 'alt' },
   { dataIndex: 'variantType', title: 'Variant Type' },
-  { dataIndex: 'biosampleCount', title: 'Biosample count' },
+  {
+    dataIndex: 'biosamples',
+    title: 'Biosamples',
+    render: (b) => <BiosamplesLinks>{biosamplesLinks(b)}</BiosamplesLinks>,
+  },
 ];
+
+function biosamplesLinks(bsamples) {
+  if (bsamples == null) {
+    return '-';
+  }
+  const links = bsamples.map((b) => {
+    return (
+      <a target="_blank" rel="noopener noreferrer">
+        <p>
+          {b.datasetId} ({b.sampleCount})
+        </p>
+      </a>
+    );
+  });
+  return links;
+}
+const BiosamplesLinks = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  > a p {
+    margin: 0;
+    padding: 0;
+  }
+`;
 
 const variantsTableRows = (variants) => {
   return variants.map((v) => {
@@ -18,10 +48,7 @@ const variantsTableRows = (variants) => {
       ref: v.variant.ref || '-',
       alt: v.variant.alt || '-',
       variantType: v.variant.variantType,
-      biosampleCount: v.datasetAlleleResponses.reduce(
-        (sum, d) => sum + d.sampleCount || 0,
-        0
-      ),
+      biosamples: getBiosamples(v),
     };
   });
 };
@@ -35,8 +62,27 @@ const VariantsResults = ({ queryResults }) => {
   );
 };
 
-// datasetAlleleResponses
-// sum all sample counts
+function getBiosamples(variant) {
+  const datasets = variant.datasetAlleleResponses;
+  if (Object.keys(datasets).length === 0) {
+    return [];
+  }
+  const biosamples = [];
+  datasets.forEach((d) => {
+    if (d.exists) {
+      biosamples.push({
+        datasetId: d.datasetId,
+        sampleCount: d.sampleCount,
+      });
+    }
+  });
+  return biosamples;
+}
+
+//   biosampleCount: v.datasetAlleleResponses.reduce(
+//     (sum, d) => sum + d.sampleCount || 0,
+//     0
+//   )
 
 export default VariantsResults;
 
