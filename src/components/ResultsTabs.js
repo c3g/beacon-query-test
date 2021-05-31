@@ -29,10 +29,12 @@ const ResultsTabs = ({
           )}
         </TabPane>
         <TabPane tab="Biosamples" key="2">
-          <BiosamplesResults
-            filteringTerms={filteringTerms}
-            queryResults={biosamplesQueryResults}
-          />
+          {biosamplesQueryResults && (
+            <BiosamplesResults
+              filteringTerms={filteringTerms}
+              queryResults={biosamplesQueryResults}
+            />
+          )}
         </TabPane>
         <TabPane tab="Beacon Datasets" key="3">
           <DatasetsInfo datasetsInfo={datasetsInfo} />

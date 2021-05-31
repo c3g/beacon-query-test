@@ -1,19 +1,25 @@
 import React from 'react';
 import PaginatedTable from './PaginatedTable';
+import { getHandovers } from '../utils/getHandovers';
+
 import styled from 'styled-components';
 
 const biosamplesTableColumns = [
   { dataIndex: 'id', title: 'id' },
-  { dataIndex: 'classifications', title: 'Classifications' },
-  { dataIndex: 'handovers', title: 'handovers' },
+  {
+    dataIndex: 'handovers',
+    title: 'Sample Details',
+    render: (handovers) => (
+      <LinksWrapper>{getHandovers(handovers)}</LinksWrapper>
+    ),
+  },
 ];
 
 const biosamplesTableRows = (biosamples) => {
   return biosamples.map((b) => {
     return {
       id: b.biosampleId,
-      classifications: getClassifications(b),
-      handovers: getHandovers(b),
+      handovers: b.handovers,
     };
   });
 };
@@ -27,12 +33,14 @@ const BiosamplesResults = ({ queryResults }) => {
   );
 };
 
-function getClassifications(c) {
-  return null;
-}
-
-function getHandovers(h) {
-  return null;
-}
+const LinksWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  > a p {
+    margin: 0;
+    padding: 0;
+  }
+`;
 
 export default BiosamplesResults;

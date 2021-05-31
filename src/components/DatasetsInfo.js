@@ -1,5 +1,6 @@
 import React from 'react';
 import PaginatedTable from './PaginatedTable';
+import { getHandovers } from '../utils/getHandovers';
 import { Tag } from 'antd';
 import styled from 'styled-components';
 
@@ -21,25 +22,10 @@ const datasetsTableColumns = [
     dataIndex: 'handovers',
     title: 'Handovers',
     render: (handovers) => (
-      <LinksWrapper>{handoverLinks(handovers)}</LinksWrapper>
+      <LinksWrapper>{getHandovers(handovers)}</LinksWrapper>
     ),
   },
 ];
-
-function handoverLinks(handovers) {
-  if (handovers == null) {
-    return '-';
-  }
-  const links = handovers.map((h, index) => {
-    return (
-      <a href={h.url} target="_blank" rel="noopener noreferrer">
-        <p>{h.note}</p>
-      </a>
-    );
-  });
-
-  return links;
-}
 
 const datasetsTableRows = (datasets) => {
   return datasets.map((d) => {
