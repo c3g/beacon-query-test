@@ -4,12 +4,13 @@ import Header from './Header';
 import ResultsTabs from './ResultsTabs';
 import FixedQueries from './FixedQueries';
 import * as api from '../api';
-import VictoryDonutChart from './VictoryDonutChart';
+import { ageInYears } from '../utils/ageInYears';
 
 const App = () => {
   // todo: repackage into context or redux
   const [variantQueryResults, setVariantQueryResults] = useState(null);
   const [biosamplesQueryResults, setBiosamplesQueryResults] = useState(null);
+  const [individualsQueryResults, setIndividualsQueryResults] = useState(null);
   const [beaconInfo, setBeaconInfo] = useState(null);
   const [cohortsInfo, setCohortsInfo] = useState(null);
   const [datasetsInfo, setDatasetsInfo] = useState(null);
@@ -29,10 +30,12 @@ const App = () => {
       <FixedQueries
         setVariantQueryResults={setVariantQueryResults}
         setBiosamplesQueryResults={setBiosamplesQueryResults}
+        setIndividualsQueryResults={setIndividualsQueryResults}
       />
       <ResultsTabs
         variantQueryResults={variantQueryResults}
         biosamplesQueryResults={biosamplesQueryResults}
+        individualsQueryResults={individualsQueryResults}
         cohortsInfo={cohortsInfo}
         datasetsInfo={datasetsInfo}
         filteringTerms={filteringTerms}
@@ -103,14 +106,5 @@ function ageRange(range) {
   }
   return { start: ageInYears(range.start), end: ageInYears(range.end) };
 }
-
-const ageInYears = (ISODurationAge) => {
-  if (ISODurationAge == null) {
-    return null;
-  }
-  const regex = /(?:P)(.*)(?:Y)/;
-  const result = regex.exec(ISODurationAge);
-  return Number(result[1]);
-};
 
 export default App;

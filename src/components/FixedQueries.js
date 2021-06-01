@@ -11,6 +11,13 @@ const mtQuery = {
   limit: '100',
 };
 
+const mtQuery2 = {
+  assemblyId: 'GRCh37',
+  referenceName: 'MT',
+  includeDatasetResponses: 'ALL',
+  limit: '100',
+};
+
 const strucuturalQuery = {
   assemblyId: 'GRCh37.p1',
   referenceName: '21',
@@ -38,17 +45,22 @@ const filterSearch = {
 const FixedQueries = ({
   setVariantQueryResults,
   setBiosamplesQueryResults,
+  setIndividualsQueryResults,
 }) => {
   const submitVariantsQuery = (query) => {
     api.variants(query).then((r) => setVariantQueryResults(r));
     api.biosamples(query).then((r) => setBiosamplesQueryResults(r));
+    api.individuals(query).then((r) => setIndividualsQueryResults(r));
   };
 
   return (
     <Wrapper>
       <Button onClick={() => submitVariantsQuery(SnpQuery)}>SNP query</Button>
       <Button onClick={() => submitVariantsQuery(mtQuery)}>
-        All MT variants
+        MT variants GRCh37.p1
+      </Button>
+      <Button onClick={() => submitVariantsQuery(mtQuery2)}>
+        MT variants GRCh37
       </Button>
       <Button onClick={() => submitVariantsQuery(strucuturalQuery)}>
         structural variant query

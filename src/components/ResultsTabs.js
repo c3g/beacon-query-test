@@ -6,6 +6,7 @@ import CohortsInfo from './CohortsInfo';
 import DatasetsInfo from './DatasetsInfo';
 import Spinner from './Spinner';
 import BiosamplesResults from './BiosamplesResults';
+import IndividualsResults from './IndividualsResults';
 
 const { TabPane } = Tabs;
 
@@ -16,6 +17,7 @@ function callback(key) {
 const ResultsTabs = ({
   variantQueryResults,
   biosamplesQueryResults,
+  individualsQueryResults,
   cohortsInfo,
   datasetsInfo,
   filteringTerms,
@@ -36,10 +38,18 @@ const ResultsTabs = ({
             />
           )}
         </TabPane>
-        <TabPane tab="Beacon Datasets" key="3">
+        <TabPane tab="Individuals" key="3">
+          {individualsQueryResults && (
+            <IndividualsResults
+              filteringTerms={filteringTerms}
+              queryResults={individualsQueryResults}
+            />
+          )}
+        </TabPane>
+        <TabPane tab="Beacon Datasets" key="4">
           <DatasetsInfo datasetsInfo={datasetsInfo} />
         </TabPane>
-        <TabPane tab="Cohorts" key="4">
+        <TabPane tab="Cohorts" key="5">
           <CohortsInfo cohortsInfo={cohortsInfo} />
         </TabPane>
       </Tabs>
