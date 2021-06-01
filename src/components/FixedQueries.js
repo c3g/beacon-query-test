@@ -38,10 +38,12 @@ const filterSearch = {
 const FixedQueries = ({
   setVariantQueryResults,
   setBiosamplesQueryResults,
+  setIndividualsQueryResults,
 }) => {
   const submitVariantsQuery = (query) => {
     api.variants(query).then((r) => setVariantQueryResults(r));
     api.biosamples(query).then((r) => setBiosamplesQueryResults(r));
+    api.individuals(query).then((r) => setIndividualsQueryResults(r));
   };
 
   return (

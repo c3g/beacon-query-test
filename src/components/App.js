@@ -10,6 +10,7 @@ const App = () => {
   // todo: repackage into context or redux
   const [variantQueryResults, setVariantQueryResults] = useState(null);
   const [biosamplesQueryResults, setBiosamplesQueryResults] = useState(null);
+  const [individualsQueryResults, setIndividualsQueryResults] = useState(null);
   const [beaconInfo, setBeaconInfo] = useState(null);
   const [cohortsInfo, setCohortsInfo] = useState(null);
   const [datasetsInfo, setDatasetsInfo] = useState(null);
@@ -29,10 +30,12 @@ const App = () => {
       <FixedQueries
         setVariantQueryResults={setVariantQueryResults}
         setBiosamplesQueryResults={setBiosamplesQueryResults}
+        setIndividualsQueryResults={setIndividualsQueryResults}
       />
       <ResultsTabs
         variantQueryResults={variantQueryResults}
         biosamplesQueryResults={biosamplesQueryResults}
+        individualsQueryResults={individualsQueryResults}
         cohortsInfo={cohortsInfo}
         datasetsInfo={datasetsInfo}
         filteringTerms={filteringTerms}
