@@ -4,7 +4,7 @@ import Header from './Header';
 import ResultsTabs from './ResultsTabs';
 import FixedQueries from './FixedQueries';
 import * as api from '../api';
-import VictoryDonutChart from './VictoryDonutChart';
+import { ageInYears } from '../utils/ageInYears';
 
 const App = () => {
   // todo: repackage into context or redux
@@ -106,14 +106,5 @@ function ageRange(range) {
   }
   return { start: ageInYears(range.start), end: ageInYears(range.end) };
 }
-
-const ageInYears = (ISODurationAge) => {
-  if (ISODurationAge == null) {
-    return null;
-  }
-  const regex = /(?:P)(.*)(?:Y)/;
-  const result = regex.exec(ISODurationAge);
-  return Number(result[1]);
-};
 
 export default App;

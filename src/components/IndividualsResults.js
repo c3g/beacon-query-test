@@ -29,15 +29,19 @@ const individualsTableRows = (individuals) => {
 };
 
 const IndividualsResults = ({ queryResults }) => {
-  console.log({ individualsqueryResults: queryResults });
-
+  console.log({ indvResults: queryResults });
   return (
-    <PaginatedTable
-      rows={individualsTableRows(queryResults.results)}
-      columns={individualsTableColumns}
-    />
+    <>
+      <ChartArea>some charts here</ChartArea>
+      <PaginatedTable
+        rows={individualsTableRows(queryResults.results)}
+        columns={individualsTableColumns}
+      />
+    </>
   );
 };
+
+const ChartArea = styled.div``;
 
 const LinksWrapper = styled.div`
   display: flex;
@@ -52,7 +56,7 @@ const LinksWrapper = styled.div`
 //helpers
 
 function getPhenotypicFeatures(features) {
-  if (features == null) {
+  if (features == null || Object.keys(features).length === 0) {
     return [];
   }
   const phenotypicFeatures = [];
@@ -63,7 +67,7 @@ function getPhenotypicFeatures(features) {
 }
 
 function getDiseases(diseaseArray) {
-  if (diseaseArray == null) {
+  if (diseaseArray == null || Object.keys(diseaseArray).length === 0) {
     return [];
   }
   const diseases = [];
