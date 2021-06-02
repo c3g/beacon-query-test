@@ -1,8 +1,12 @@
 import React from 'react';
 import PaginatedTable from './PaginatedTable';
+import BarChartContainer from './BarChartContainer';
 import { getHandovers } from '../utils/getHandovers';
 import { ageInYears } from '../utils/ageInYears';
 import styled from 'styled-components';
+
+const chartWidth = 180;
+const chartContainerWidth = 200;
 
 const biosamplesTableColumns = [
   { dataIndex: 'id', title: 'id' },
@@ -27,10 +31,20 @@ const biosamplesTableRows = (biosamples) => {
 
 const BiosamplesResults = ({ queryResults }) => {
   const ageRanges = subjectAgeStats(queryResults.results);
+  console.log({ ages: barChartFormat(ageRanges) });
 
+  // TODO
+  // title, data, chartWidth, containerWidth
   return (
     <>
-      <ChartArea>{JSON.stringify(ageRanges)}</ChartArea>
+      <ChartArea>
+        <BarChartContainer
+          title="Subject age at collection"
+          data={barChartFormat(ageRanges)}
+          chartWidth={chartWidth}
+          chartContainerWidth={chartContainerWidth}
+        />
+      </ChartArea>
       <PaginatedTable
         rows={biosamplesTableRows(queryResults.results)}
         columns={biosamplesTableColumns}
@@ -69,13 +83,12 @@ function subjectAgeStats(biosamples) {
     80: 0,
     90: 0,
     100: 0,
-    unknown: 0,
   };
   biosamples.forEach((e) => {
     let age, ageBin;
     const ISOAge = e.subjectAgeAtCollection;
     if (ISOAge == null) {
-      ages.unknown += 1;
+      // ages.unknown += 1;
     } else {
       age = ageInYears(ISOAge);
       ageBin = 10 * Math.floor(age / 10);
@@ -86,6 +99,12 @@ function subjectAgeStats(biosamples) {
     }
   });
   return ages;
+}
+
+function barChartFormat(data) {
+  return Object.keys(data).map((key) => {
+    return { x: key, y: data[key] };
+  });
 }
 
 export default BiosamplesResults;

@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 import ChartContainer from './ChartContainer';
 import AgeRange from './AgeRange';
+import { chartWidth, chartContainerWidth } from '../constants';
 
 const CohortsInfo = ({ cohortsInfo }) => {
   // display dashboard for cohorts... name and a few charts
@@ -10,8 +11,8 @@ const CohortsInfo = ({ cohortsInfo }) => {
   // string for cohort name
 
   //   fixed chart size for now
-  const chartWidth = 180;
-  const chartContainerWidth = 200;
+  // const chartWidth = 180;
+  // const chartContainerWidth = 200;
 
   const { name, size, sexes, ageRange, eventLocations, ethnicities } =
     cohortsInfo;

@@ -34,3 +34,6 @@ export const headerColour = '#fafafa';
 export const borderColour = '#dedede';
 
 export const allowAnimation = false;
+
+export const chartWidth = 180;
+export const chartContainerWidth = 200;
