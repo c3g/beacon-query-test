@@ -24,7 +24,6 @@ const ChartWrapper = styled.div`
   max-height: 200px;
   justify-content: center;
   margin: 5px;
-  padding: 0;
   border: 1px solid ${borderColour};
 `;
 
