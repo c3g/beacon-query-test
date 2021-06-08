@@ -33,8 +33,6 @@ const BiosamplesResults = ({ queryResults }) => {
   const ageRanges = subjectAgeStats(queryResults.results);
   console.log({ ages: barChartFormat(ageRanges) });
 
-  // TODO
-  // title, data, chartWidth, containerWidth
   return (
     <>
       <ChartArea>

@@ -6,7 +6,7 @@ const BarChart = ({ data, width }) => {
   return (
     <VictoryChart
       theme={VictoryTheme.material}
-      padding={50}
+      padding={{ top: 20, bottom: 60, left: 50, right: 50 }}
       domainPadding={20}
       width={width}
       height={width}
@@ -14,7 +14,6 @@ const BarChart = ({ data, width }) => {
     >
       <VictoryAxis
         label="Age (years)"
-        tickValues={[20, 40, 60, 80]}
         tickFormat={(x) => {
           return x % 30 == 0 ? `${x}` : ``;
         }}
@@ -25,13 +24,16 @@ const BarChart = ({ data, width }) => {
       <VictoryAxis
         dependentAxis
         label="Count"
+        tickFormat={(y) => {
+          return Number.isInteger(y) ? `${y}` : ``;
+        }}
         style={{
           axisLabel: { padding: 33 },
         }}
       />
 
       <VictoryBar
-        style={{ data: { fill: '#c43a31', stroke: '#000000', strokeWidth: 1 } }}
+        style={{ data: { fill: '#4b9b79', stroke: '#000000', strokeWidth: 1 } }}
         data={data}
         barRatio={1}
         alignment="start"
