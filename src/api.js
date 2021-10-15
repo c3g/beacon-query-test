@@ -1,3 +1,5 @@
+// expects Beacon v2, draft 2, now deprecated
+
 // Note: api base url set in package.json proxy
 const API_BASE = '';
 
